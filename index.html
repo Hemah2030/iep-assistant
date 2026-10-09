@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مساعد الخطة الفردية | معلمي التربية الخاصة - الإعاقة العقلية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8fc; --card:#fff; --ink:#1a2333; --muted:#68748a;
+  --pri:#1d6fa5; --pri2:#15938a; --acc:#f4a259; --vio:#6c5ce7;
+  --line:#e4e9f2; --ok:#1a9e6a; --radius:18px;
+  --shadow:0 10px 30px rgba(29,111,165,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Tajawal',system-ui,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+a{color:inherit}
+.topbar{background:linear-gradient(135deg,#123c5e,#1d6fa5 60%,#15938a);color:#fff;padding:14px 0;position:sticky;top:0;z-index:50;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+.wrap{max-width:1150px;margin:0 auto;padding:0 18px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.15rem}
+.brand .logo{width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:26px;box-shadow:var(--shadow)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{text-decoration:none;background:rgba(255,255,255,.16);padding:8px 14px;border-radius:999px;font-weight:700;font-size:.9rem;border:1px solid rgba(255,255,255,.25)}
+.nav a:hover{background:#fff;color:#123c5e}
+.hero{background:radial-gradient(700px 300px at 85% 10%,#ffe9c9,transparent),radial-gradient(700px 300px at 10% 20%,#d8f3ef,transparent);padding:38px 0 22px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#e8f6f1;color:#0d6e5f;border:1px solid #bfe8dc;padding:6px 14px;border-radius:999px;font-weight:800;font-size:.85rem}
+h1{margin:12px 0 8px;font-size:2rem;line-height:1.4;font-weight:900}
+h1 span{color:var(--pri)}
+.sub{color:var(--muted);font-size:1.02rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+@media(max-width:700px){.steps{grid-template-columns:repeat(2,1fr)}}
+.step{background:#f2f7fb;border:1px dashed #bcd4e6;border-radius:14px;padding:10px;text-align:center;font-weight:800;font-size:.88rem}
+.step b{display:block;font-size:1.3rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.stat{background:linear-gradient(180deg,#fff,#f2f7fb);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.stat b{font-size:1.5rem;color:var(--pri)}
+.how{background:#123c5e;color:#eaf3fa;border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.how h3{margin:0 0 10px}
+.how ol{margin:0;padding-right:20px}
+.how li{margin:8px 0}
+.btn{border:0;cursor:pointer;border-radius:12px;padding:12px 20px;font-family:inherit;font-weight:800;font-size:1rem;transition:.15s}
+.btn-pri{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;box-shadow:0 8px 20px rgba(21,147,138,.3)}
+.btn-pri:hover{transform:translateY(-1px)}
+.btn-ghost{background:#eef3f8;color:#123c5e;border:1px solid var(--line)}
+.btn-acc{background:var(--acc);color:#3a2305}
+.btn-sm{padding:7px 12px;font-size:.85rem;border-radius:10px}
+.section{margin:26px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.card h2{margin:0 0 6px;font-size:1.35rem}
+.card p.desc{margin:0 0 16px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+label.f{display:block;font-weight:800;margin:10px 0 6px;font-size:.92rem}
+input[type=text],input[type=number],select,textarea{width:100%;font-family:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fbfcfe;font-size:.95rem}
+textarea{min-height:80px;resize:vertical}
+.sev{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:600px){.sev{grid-template-columns:1fr}}
+.sev input{display:none}
+.sev label{border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;cursor:pointer;background:#fbfcfe}
+.sev label b{display:block;font-size:1.02rem}
+.sev label small{color:var(--muted)}
+.sev input:checked+label{border-color:var(--pri);background:#eaf3fb;box-shadow:0 6px 16px rgba(29,111,165,.18)}
+.domains{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+@media(max-width:850px){.domains{grid-template-columns:1fr}}
+.domain{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.domain-head{padding:12px 14px;font-weight:900;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.domain-body{padding:12px 14px;display:grid;gap:8px;max-height:270px;overflow:auto}
+.need{display:flex;gap:10px;align-items:flex-start;background:#f7fafc;border:1px solid var(--line);border-radius:12px;padding:9px 10px;cursor:pointer;font-size:.9rem}
+.need input{margin-top:6px;width:18px;height:18px;accent-color:var(--pri)}
+.need small{display:block;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.filters{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:800px){.filters{grid-template-columns:1fr}}
+.bank-list{display:grid;gap:10px;max-height:520px;overflow:auto;padding-left:4px}
+.goal{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;display:grid;gap:6px}
+.goal .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:.75rem}
+.tag{padding:3px 10px;border-radius:999px;font-weight:800;border:1px solid var(--line);background:#f2f7fb}
+.tag.t-عام{background:#fff4e0;border-color:#f5d9a8;color:#7a4a06}
+.tag.t-سلوكي{background:#e6f6ef;border-color:#b6e3c9;color:#0d6e3f}
+.tag.t-قصير{background:#ecebff;border-color:#c9c6ff;color:#3b34a8}
+.goal .txt{font-weight:700}
+.goal .row{display:flex;gap:8px;flex-wrap:wrap}
+.plan-output{background:#fdfeff;border:2px dashed #9fc3dd;border-radius:18px;padding:18px}
+.plan-paper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.plan-paper h3{margin:14px 0 8px;color:#123c5e;border-bottom:2px solid #eef3f8;padding-bottom:6px}
+.plan-paper ul{margin:6px 0;padding-right:20px}
+.plan-paper li{margin:6px 0;background:#f7fafc;border:1px solid #eef2f7;border-radius:10px;padding:8px 10px}
+.empty{text-align:center;color:var(--muted);padding:26px;border:1px dashed var(--line);border-radius:14px;background:#fbfcfe}
+footer{margin:30px 0 40px;color:var(--muted);text-align:center;font-size:.88rem}
+.toast{position:fixed;bottom:18px;right:50%;transform:translateX(50%);background:#123c5e;color:#fff;padding:10px 20px;border-radius:999px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.show{opacity:1}
+@media print{
+  .topbar,.hero,.no-print,footer,.toast{display:none!important}
+  body{background:#fff}
+  .card{box-shadow:none}
+  .section{margin:8px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">📋</span> مساعد الخطة الفردية <small style="font-weight:500;opacity:.85">| الإعاقة العقلية</small></div>
+    <nav class="nav">
+      <a href="#wizard">🎯 توليد الخطة</a>
+      <a href="#bank">🏦 بنك الأهداف</a>
+      <a href="#plan">🖨️ الخطة النهائية</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+<div class="wrap hero-grid">
+  <div class="hero-card">
+    <span class="badge">✨ مصمم لمعلمي ومعلمات التربية الخاصة</span>
+    <h1>حدّد <span>نقاط الاحتياج</span> .. ودع المساعد يولّد لك الأهداف المناسبة للحالة</h1>
+    <p class="sub">بنك أهداف شامل + توليد أهداف عامة، وأهداف سلوكية قابلة للقياس، وأهداف تدريسية قصيرة المدى — بصياغة تربوية جاهزة للخطة التربوية الفردية (IEP)، حسب درجة الإعاقة: بسيطة / متوسطة / شديدة.</p>
+    <div class="steps">
+      <div class="step"><b>1️⃣</b> بيانات الطالب</div>
+      <div class="step"><b>2️⃣</b> تحديد الاحتياج</div>
+      <div class="step"><b>3️⃣</b> توليد الأهداف</div>
+      <div class="step"><b>4️⃣</b> طباعة الخطة</div>
+    </div>
+    <div class="toolbar">
+      <button class="btn btn-pri" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">ابدأ تحديد الاحتياج ⬇</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('bank').scrollIntoView({behavior:'smooth'})">استعرض بنك الأهداف</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stGoals">0</b><br>🎯 هدف في البنك</div>
+      <div class="stat"><b>7</b><br>🧩 مجالات نمو</div>
+      <div class="stat"><b>3</b><br>📊 مستويات شدة</div>
+    </div>
+  </div>
+  <div class="how">
+    <h3>💡 كيف يعمل المساعد؟</h3>
+    <ol>
+      <li>أدخل اسم الطالب ودرجة الإعاقة العقلية.</li>
+      <li>ضع علامة ✓ أمام نقاط الاحتياج الملاحظة لدى الحالة.</li>
+      <li>اضغط <b>«توليد الأهداف»</b> ليقترح النظام: هدفًا عامًا + 2-3 أهداف سلوكية قابلة للقياس + أهدافًا قصيرة (تحليل مهمة) لكل احتياج.</li>
+      <li>عدّل أو أضف من البنك، ثم اطبع الخطة أو انسخها.</li>
+    </ol>
+    <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:.9rem">
+    <b>صيغة الهدف السلوكي المعتمدة:</b> أن + فعل سلوكي إجرائي + وصف الأداء + الشرط/المساعدة + معيار النجاح (نسبة % أو عدد محاولات) + الإطار الزمني.
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+
+<!-- WIZARD -->
+<section id="wizard" class="section">
+<div class="card">
+  <h2>🎯 الخطوة 1 & 2: بيانات الحالة وتحديد نقاط الاحتياج</h2>
+  <p class="desc">كلما كانت نقاط الاحتياج دقيقة، كانت الأهداف المولّدة أنسب للحالة. اختر مجالًا واحدًا على الأقل.</p>
+  <div class="grid2">
+    <div>
+      <label class="f">اسم الطالب / الطالبة</label>
+      <div style="background:#fff8e6;border:1px solid #f0d48a;color:#7a5410;border-radius:10px;padding:7px 11px;font-size:.83rem;font-weight:700;margin-bottom:6px">⚠️ تنبيه: لا تضع الاسم الحقيقي للمحافظة على خصوصية الطالب — استخدم اسمًا رمزيًا أو أول حرف فقط.</div>
+      <input type="text" id="stuName" placeholder="مثال: الطالب (س) — اسم رمزي فقط">
+      <div class="grid2">
+        <div><label class="f">العمر</label><input type="number" id="stuAge" min="3" max="21" placeholder="مثال: 9"></div>
+        <div><label class="f">الصف / المرحلة</label><input type="text" id="stuGrade" placeholder="مثال: ثالث ابتدائي - تربية خاصة"></div>
+      </div>
+      <label class="f">الفصل الدراسي / مدة الخطة</label>
+      <div class="grid2">
+        <div><select id="term"><option>الفصل الدراسي الأول</option><option>الفصل الدراسي الثاني</option><option>الفصل الدراسي الثالث</option><option>خطة سنوية</option></select></div>
+        <div><select id="weeks"><option value="8">مدة التنفيذ: 8 أسابيع</option><option value="12" selected>مدة التنفيذ: 12 أسبوعًا (فصل)</option><option value="16">مدة التنفيذ: 16 أسبوعًا</option></select></div>
+      </div>
+      <label class="f">ملاحظات تشخيصية (اختياري)</label>
+      <textarea id="stuNotes" placeholder="مثال: تشتت انتباه، يحتاج مساعدة جزئية في ارتداء الملابس، حصيلة لغوية محدودة..."></textarea>
+    </div>
+    <div>
+      <label class="f">درجة الإعاقة العقلية (تُستخدم لترشيح مستوى الأهداف)</label>
+      <div class="sev">
+        <div><input type="radio" name="sev" id="s1" value="بسيطة" checked><label for="s1"><b>🟢 بسيطة</b><small>قابل للتعلم - أهداف أكاديمية وظيفية</small></label></div>
+        <div><input type="radio" name="sev" id="s2" value="متوسطة"><label for="s2"><b>🟡 متوسطة</b><small>قابل للتدريب - استقلالية وتواصل</small></label></div>
+        <div><input type="radio" name="sev" id="s3" value="شديدة"><label for="s3"><b>🔴 شديدة</b><small>رعاية ذاتية واستجابات أساسية</small></label></div>
+      </div>
+      <label class="f">خيارات التوليد</label>
+      <div class="grid2">
+        <div><label class="f" style="font-weight:500">عدد الأهداف السلوكية لكل احتياج</label><select id="numBeh"><option value="2">2 أهداف</option><option value="3" selected>3 أهداف</option></select></div>
+        <div><label class="f" style="font-weight:500">الأهداف القصيرة لكل احتياج</label><select id="numShort"><option value="2">2 أهداف</option><option value="3" selected>3 أهداف</option><option value="4">4 أهداف</option></select></div>
+      </div>
+      <div class="toolbar">
+        <button class="btn btn-pri" onclick="generatePlan()">⚙️ توليد الأهداف من الاحتياج</button>
+        <button class="btn btn-ghost btn-sm" onclick="selectAll(true)">تحديد الكل</button>
+        <button class="btn btn-ghost btn-sm" onclick="selectAll(false)">مسح التحديد</button>
+      </div>
+      <div id="selCount" style="font-weight:800;color:var(--pri)">تم تحديد 0 نقطة احتياج</div>
+    </div>
+  </div>
+  <div id="domains" class="domains" style="margin-top:14px"></div>
+</div>
+</section>
+
+<!-- BANK -->
+<section id="bank" class="section">
+<div class="card">
+  <h2>🏦 بنك الأهداف للخطة الفردية</h2>
+  <p class="desc">ابحث ورشّح حسب المجال ونوع الهدف ودرجة الإعاقة، ثم أضف أي هدف مباشرة إلى خطتك بزر «➕ إضافة للخطة».</p>
+  <div class="filters no-print">
+    <input type="text" id="q" placeholder="🔍 ابحث بكلمة... (مثال: غسل اليدين، الجمع، التواصل البصري)" oninput="renderBank()">
+    <select id="fDomain" onchange="renderBank()"></select>
+    <select id="fType" onchange="renderBank()">
+      <option value="">كل الأنواع</option><option>عام</option><option>سلوكي</option><option>قصير</option>
+    </select>
+  </div>
+  <div class="filters no-print">
+    <select id="fSev" onchange="renderBank()"><option value="">كل درجات الإعاقة</option><option>بسيطة</option><option>متوسطة</option><option>شديدة</option></select>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-ghost btn-sm" onclick="copyBank()">📋 نسخ النتائج</button>
+    </div>
+    <div id="bankCount" style="font-weight:800;color:var(--muted);align-self:center"></div>
+  </div>
+  <div id="bankList" class="bank-list"></div>
+</div>
+</section>
+
+<!-- PLAN -->
+<section id="plan" class="section">
+<div class="card">
+  <h2>🖨️ الخطة التربوية الفردية المولّدة</h2>
+  <p class="desc">راجع الأهداف، احذف أو أضف ما تشاء، ثم اطبع أو انسخ أو حمّل الخطة. تُحفظ الخطة تلقائيًا في المتصفح.</p>
+  <div class="toolbar no-print">
+    <button class="btn btn-pri" onclick="generatePlan()">🔄 إعادة التوليد</button>
+    <button class="btn btn-ghost" onclick="window.print()">🖨️ طباعة / PDF</button>
+    <button class="btn btn-ghost" onclick="copyPlan()">📋 نسخ الخطة</button>
+    <button class="btn btn-acc" onclick="downloadPlan()">⬇️ تحميل Word</button>
+    <button class="btn btn-ghost" onclick="clearPlan()">🗑️ مسح الخطة</button>
+  </div>
+  <div class="plan-output">
+    <div id="planPaper" class="plan-paper"><div class="empty">لم يتم توليد الخطة بعد.<br>حدّد نقاط الاحتياج بالأعلى ثم اضغط <b>«توليد الأهداف»</b> — أو أضف أهدافًا يدويًا من بنك الأهداف.</div></div>
+  </div>
+  <label class="f no-print" style="margin-top:12px">➕ إضافة هدف مخصص يدويًا</label>
+  <div class="grid2 no-print">
+    <input type="text" id="customGoal" placeholder="اكتب هدفًا مخصصًا...">
+    <div style="display:flex;gap:8px"><select id="customType"><option>عام</option><option>سلوكي</option><option>قصير</option></select><button class="btn btn-pri btn-sm" onclick="addCustom()">إضافة</button></div>
+  </div>
+</div>
+</section>
+
+<footer>تصميم أ/ عائشة بنت حامد البحيري 🌿 — لخدمة معلمي ومعلمات التربية الخاصة (الإعاقة العقلية) | يعمل دون إنترنت بعد أول تحميل | جميع البيانات تُحفظ محليًا في جهازك</footer>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ============ البيانات: المجالات ونقاط الاحتياج ============ */
+const DOMAINS = [
+ {id:'self', name:'🧼 الاستقلالية والرعاية الذاتية', color:'linear-gradient(135deg,#15938a,#1d6fa5)', needs:[
+   {id:'n_eat', t:'يحتاج مساعدة في تناول الطعام والشرب', d:'يسكب، لا يستخدم الملعقة جيدًا'},
+   {id:'n_dress', t:'يحتاج مساعدة في ارتداء وخلع الملابس', d:'أزرار، سحاب، حذاء'},
+   {id:'n_toilet', t:'يحتاج تدريب على استخدام دورة المياه', d:'استقلالية الحمام والنظافة'},
+   {id:'n_hand', t:'يحتاج تدريب على غسل اليدين والوجه والأسنان', d:'النظافة الشخصية اليومية'},
+   {id:'n_safety', t:'يحتاج توعية بالسلامة الشخصية', d:'عبور الشارع، الغرباء، الأدوات الحادة'},
+ ]},
+ {id:'lang', name:'🗣️ التواصل واللغة', color:'linear-gradient(135deg,#6c5ce7,#a55eea)', needs:[
+   {id:'n_eye', t:'ضعف التواصل البصري والانتباه المشترك', d:'لا ينظر للمتحدث'},
+   {id:'n_vocab', t:'حصيلة لغوية محدودة / تأخر لفظي', d:'مفردات يومية قليلة'},
+   {id:'n_sentence', t:'صعوبة تكوين جمل من كلمتين أو أكثر', d:'يستخدم كلمات مفردة فقط'},
+   {id:'n_request', t:'صعوبة التعبير عن الاحتياجات والطلب', d:'يلجأ للبكاء أو الإشارة'},
+   {id:'n_listen', t:'صعوبة فهم التعليمات والأوامر', d:'لا يتبع أمرًا من خطوة واحدة'},
+ ]},
+ {id:'acad', name:'🔢 الأكاديمي الوظيفي', color:'linear-gradient(135deg,#e67e22,#f4a259)', needs:[
+   {id:'n_read', t:'صعوبة تمييز الحروف والقراءة الوظيفية', d:'تمييز الحروف والكلمات الشائعة'},
+   {id:'n_write', t:'صعوبة الكتابة ومسك القلم', d:'نسخ الحروف والاسم'},
+   {id:'n_num', t:'صعوبة مفهوم العدد والعد', d:'العد حتى 10'},
+   {id:'n_money', t:'صعوبة التعرف على النقود والوقت', d:'مهارات حياتية: نقود، ساعة، أيام'},
+   {id:'n_colors', t:'صعوبة تمييز الألوان والأشكال', d:'فرز وتصنيف أساسي'},
+ ]},
+ {id:'soc', name:'🤝 الاجتماعي والانفعالي', color:'linear-gradient(135deg,#e84393,#fd79a8)', needs:[
+   {id:'n_share', t:'صعوبة المشاركة واللعب الجماعي', d:'لعب فردي، رفض الدور'},
+   {id:'n_greet', t:'صعوبة التحية وآداب التفاعل', d:'لا يحيي أو يستأذن'},
+   {id:'n_emotion', t:'صعوبة التعرف على المشاعر وضبطها', d:'نوبات غضب، بكاء'},
+   {id:'n_wait', t:'صعوبة انتظار الدور واتباع القواعد', d:'اندفاعية ومقاطعة'},
+ ]},
+ {id:'motor', name:'🏃 المهارات الحركية', color:'linear-gradient(135deg,#27ae60,#2ecc71)', needs:[
+   {id:'n_gross', t:'ضعف المهارات الحركية الكبرى', d:'توازن، رمي، قفز، صعود الدرج'},
+   {id:'n_fine', t:'ضعف المهارات الحركية الدقيقة', d:'قص، لصق، تركيب، خرز'},
+ ]},
+ {id:'beh', name:'🧠 السلوك التكيفي', color:'linear-gradient(135deg,#c0392b,#e74c3c)', needs:[
+   {id:'n_att', t:'تشتت الانتباه وقصر مدته', d:'لا يجلس أكثر من دقائق'},
+   {id:'n_agg', t:'سلوكيات غير مرغوبة (صراخ/عدوان/انسحاب)', d:'يحتاج خطة تعديل سلوك'},
+   {id:'n_routine', t:'صعوبة الالتزام بالروتين الصفي', d:'ترتيب الأدوات، الجلوس، الطابور'},
+ ]},
+ {id:'voc', name:'🔧 ما قبل المهني', color:'linear-gradient(135deg,#2c3e50,#4b6a8a)', needs:[
+   {id:'n_sort', t:'يحتاج تدريب على الفرز والتصنيف', d:'فرز ألوان/أحجام'},
+   {id:'n_task', t:'صعوبة إتمام مهمة من خطوات متسلسلة', d:'إنجاز مهمة حتى النهاية'},
+   {id:'n_tools', t:'صعوبة استخدام أدوات بسيطة بأمان', d:'مقص، صمغ، أدوات تنظيف'},
+ ]},
+];
+
+/* ============ بنك الأهداف ============
+   type: عام | سلوكي | قصير
+   sev: مصفوفة الدرجات المناسبة */
+const BANK = [
+ // --- استقلالية ---
+ {d:'self', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_eat'], t:'أن يستقل الطالب في تناول الطعام والشرب خلال الفصل الدراسي'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_eat'], t:'أن يتناول الطالب وجبته بالملعقة دون سكب في 4 من 5 محاولات خلال أسبوعين بمساعدة لفظية فقط'},
+ {d:'self', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_eat'], t:'أن يمسك الطالب الكوب بكلتا يديه ويشرب دون مساعدة جسدية بنسبة 80% خلال شهر'},
+ {d:'self', type:'قصير', sev:['متوسطة','شديدة'], need:['n_eat'], t:'أن يمسك الملعقة بطريقة صحيحة عند تقديمها له'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_eat'], t:'أن ينقل الطعام من الطبق إلى الفم دون سكب في 3 محاولات متتالية'},
+ {d:'self', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_dress'], t:'أن يستقل الطالب في ارتداء وخلع ملابسه الأساسية'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_dress'], t:'أن يرتدي الطالب حذاءه ويربطه (أو يلصق الشريط) مستقلًا في 4 من 5 أيام مدرسية خلال شهر'},
+ {d:'self', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_dress'], t:'أن يخلع الطالب معطفه ويعلقه بنفسه بتوجيه لفظي فقط بنسبة 80% خلال 6 أسابيع'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_dress'], t:'أن يغلق السحاب والأزرار الكبيرة بشكل مستقل'},
+ {d:'self', type:'قصير', sev:['متوسطة','شديدة'], need:['n_dress'], t:'أن يمد ذراعيه عند المساعدة في ارتداء القميص'},
+ {d:'self', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_toilet'], t:'أن يستخدم الطالب دورة المياه باستقلالية ويحافظ على نظافته'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_toilet'], t:'أن يذهب الطالب إلى دورة المياه عند الشعور بالحاجة ويطلب ذلك لفظًا أو بإشارة في 5 من 7 أيام خلال شهر'},
+ {d:'self', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_toilet'], t:'أن يبقى الطالب جافًا طوال اليوم الدراسي بجدول حمام كل ساعتين بنسبة 80% خلال 8 أسابيع'},
+ {d:'self', type:'قصير', sev:['متوسطة','شديدة'], need:['n_toilet'], t:'أن يجلس على كرسي الحمام بهدوء لمدة دقيقتين'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_toilet'], t:'أن يغسل يديه بالماء والصابون بعد استخدام الحمام دون تذكير'},
+ {d:'self', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_hand'], t:'أن يمارس الطالب عادات النظافة الشخصية اليومية باستقلالية'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_hand'], t:'أن يغسل الطالب يديه ووجهه بالصابون بخطوات متسلسلة صحيحة في 4 من 5 مرات خلال 3 أسابيع'},
+ {d:'self', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_hand'], t:'أن يفرّش الطالب أسنانه بالمعجون بتقليد النموذج أمام المرآة بنسبة 70% خلال شهرين'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة','شديدة'], need:['n_hand'], t:'أن يفتح صنبور الماء ويغلقه بنفسه'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_hand'], t:'أن يجفف يديه بالمنشفة بعد الغسيل'},
+ {d:'self', type:'عام', sev:['بسيطة','متوسطة'], need:['n_safety'], t:'أن يلتزم الطالب بقواعد السلامة الشخصية في المدرسة والمنزل'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_safety'], t:'أن يعبر الطالب الشارع مع المجموعة عند الإشارة الخضراء دون اندفاع في 5 مواقف متتالية خلال شهر'},
+ {d:'self', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_safety'], t:'أن يقول الطالب "لا" ويبتعد ويخبر المعلم عند اقتراب غريب منه في مواقف تمثيلية بنسبة 100% خلال 4 أسابيع'},
+ {d:'self', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_safety'], t:'أن يسمّي 3 أشياء خطرة (سكين، نار، شارع) من صور'},
+ // --- لغة وتواصل ---
+ {d:'lang', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_eye'], t:'أن يحسّن الطالب التواصل البصري والانتباه المشترك'},
+ {d:'lang', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_eye'], t:'أن ينظر الطالب في عيني المتحدث لمدة 5 ثوانٍ عند مناداته باسمه في 4 من 5 محاولات خلال 3 أسابيع'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_eye'], t:'أن يحافظ الطالب على التواصل البصري طوال مدة التعليمات (10 ثوانٍ) بنسبة 80% خلال شهر'},
+ {d:'lang', type:'قصير', sev:['متوسطة','شديدة'], need:['n_eye'], t:'أن يلتفت الطالب برأسه نحو مصدر الصوت عند مناداته'},
+ {d:'lang', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_eye'], t:'أن يتتبع ببصره جسمًا متحركًا أمام وجهه'},
+ {d:'lang', type:'عام', sev:['بسيطة','متوسطة'], need:['n_vocab'], t:'أن يُنمي الطالب حصيلته اللغوية من المفردات اليومية'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_vocab'], t:'أن يسمّي الطالب 20 كلمة من مفردات (الفواكه، الحيوانات، أدوات المدرسة) عند عرض الصور بنسبة 80% خلال 6 أسابيع'},
+ {d:'lang', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_vocab'], t:'أن يشير الطالب إلى 10 صور صحيحة عند سماع اسمها في 4 من 5 محاولات خلال شهر'},
+ {d:'lang', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_vocab'], t:'أن يسمّي 5 فواكه شائعة من صور مجسمة'},
+ {d:'lang', type:'قصير', sev:['متوسطة','شديدة'], need:['n_vocab'], t:'أن يطابق صورة بصورة مماثلة من نفس الفئة'},
+ {d:'lang', type:'عام', sev:['بسيطة','متوسطة'], need:['n_sentence'], t:'أن يكوّن الطالب جملًا بسيطة للتعبير عن احتياجاته'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_sentence'], t:'أن يركّب الطالب جملة من كلمتين (فعل + اسم) في 8 من 10 مواقف تواصلية خلال شهر بتلميح بصري'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة'], need:['n_sentence'], t:'أن يركّب الطالب جملة من 3 كلمات بشكل صحيح نحويًا بنسبة 70% خلال 8 أسابيع'},
+ {d:'lang', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_sentence'], t:'أن يقلد جملة من كلمتين يقولها المعلم'},
+ {d:'lang', type:'قصير', sev:['متوسطة'], need:['n_sentence'], t:'أن يضيف فعلًا مناسبًا لصورة (يأكل، يشرب، يلعب)'},
+ {d:'lang', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_request'], t:'أن يعبّر الطالب عن احتياجاته ورغباته بطريقة مقبولة'},
+ {d:'lang', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_request'], t:'أن يطلب الطالب الماء أو الطعام بالإشارة أو الصورة (PECS) بدل البكاء في 4 من 5 مواقف خلال 3 أسابيع'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_request'], t:'أن يستخدم الطالب عبارة "أريد + ..." لطلب احتياجاته بنسبة 80% دون مساعدة خلال شهر'},
+ {d:'lang', type:'قصير', sev:['متوسطة','شديدة'], need:['n_request'], t:'أن يعطي المعلم بطاقة صورة الشيء الذي يريده'},
+ {d:'lang', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_request'], t:'أن يقول "من فضلك" و"شكرًا" عند الطلب'},
+ {d:'lang', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_listen'], t:'أن يفهم الطالب التعليمات اللفظية ويستجيب لها'},
+ {d:'lang', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_listen'], t:'أن ينفذ الطالب أمرًا من خطوة واحدة (خذ، أعطِ، اجلس) في 4 من 5 محاولات خلال 3 أسابيع'},
+ {d:'lang', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_listen'], t:'أن ينفذ الطالب أمرين متسلسلين (خذ الكتاب وضعه على الطاولة) بنسبة 80% خلال 6 أسابيع'},
+ {d:'lang', type:'قصير', sev:['متوسطة','شديدة'], need:['n_listen'], t:'أن يشير إلى الشيء المسمى من بين شيئين'},
+ // --- أكاديمي ---
+ {d:'acad', type:'عام', sev:['بسيطة','متوسطة'], need:['n_read'], t:'أن يتعرف الطالب على الحروف والكلمات الوظيفية الشائعة'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة'], need:['n_read'], t:'أن يقرأ الطالب 15 كلمة وظيفية شائعة (خروج، دخول، خطر، حمام) بنسبة 80% خلال 8 أسابيع'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_read'], t:'أن يطابق الطالب الحرف بالصورة الدالة عليه في 9 من 10 محاولات خلال شهر'},
+ {d:'acad', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_read'], t:'أن يميز حرف اسمه الأول من بين 3 حروف'},
+ {d:'acad', type:'قصير', sev:['متوسطة'], need:['n_read'], t:'أن يطابق كلمة "باب/شباك/كرسي" بصورتها'},
+ {d:'acad', type:'عام', sev:['بسيطة','متوسطة'], need:['n_write'], t:'أن يُحسّن الطالب مهارة مسك القلم والكتابة'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_write'], t:'أن يكتب الطالب اسمه الأول نسخًا بشكل مقروء في 4 من 5 محاولات خلال 6 أسابيع'},
+ {d:'acad', type:'سلوكي', sev:['متوسطة'], need:['n_write'], t:'أن ينسخ الطالب خطًا أفقيًا وعموديًا ودائرة بتقليد النموذج بنسبة 80% خلال شهر'},
+ {d:'acad', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_write'], t:'أن يمسك القلم بالطريقة الثلاثية الصحيحة لمدة دقيقة'},
+ {d:'acad', type:'قصير', sev:['متوسطة'], need:['n_write'], t:'أن يلوّن داخل إطار كبير دون خروج كبير'},
+ {d:'acad', type:'عام', sev:['بسيطة','متوسطة'], need:['n_num'], t:'أن يكتسب الطالب مفهوم العدد والعد الوظيفي'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_num'], t:'أن يعدّ الطالب من 1 إلى 10 بأشياء محسوسة بشكل صحيح متسلسل بنسبة 90% خلال شهر'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة'], need:['n_num'], t:'أن يجمع الطالب عددين (مجموع ≤ 10) باستخدام المحسوسات في 8 من 10 مسائل خلال 6 أسابيع'},
+ {d:'acad', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_num'], t:'أن يعطي العدد المطلوب (1-5) من مجموعة أشياء'},
+ {d:'acad', type:'قصير', sev:['متوسطة'], need:['n_num'], t:'أن يطابق الرقم بمدلوله من النقاط (1-5)'},
+ {d:'acad', type:'عام', sev:['بسيطة','متوسطة'], need:['n_money'], t:'أن يتعرف الطالب على النقود والوقت بشكل وظيفي'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة'], need:['n_money'], t:'أن يميز الطالب فئات النقود (1، 5، 10) ويستخدمها في موقف شراء تمثيلي بنسبة 80% خلال 8 أسابيع'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_money'], t:'أن يسمّي الطالب أيام الأسبوع بالترتيب ويحدد اليوم الحالي في 4 من 5 أيام خلال شهر'},
+ {d:'acad', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_money'], t:'أن يطابق العملة المعدنية بما يساويها من صورة'},
+ {d:'acad', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_colors'], t:'أن يميز الطالب الألوان والأشكال الأساسية ويصنفها'},
+ {d:'acad', type:'سلوكي', sev:['بسيطة','متوسطة','شديدة'], need:['n_colors'], t:'أن يفرز الطالب 12 مكعبًا حسب اللون (أحمر/أصفر/أزرق) بنسبة 90% خلال 3 أسابيع'},
+ {d:'acad', type:'قصير', sev:['متوسطة','شديدة'], need:['n_colors'], t:'أن يطابق لونًا بلون مماثل من بين لونين'},
+ {d:'acad', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_colors'], t:'أن يسمّي 4 ألوان و3 أشكال (دائرة/مربع/مثلث)'},
+ // --- اجتماعي ---
+ {d:'soc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_share'], t:'أن يشارك الطالب أقرانه اللعب والأدوات'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_share'], t:'أن يلعب الطالب مع زميل لمدة 10 دقائق متشاركًا الأدوات دون نزاع في 3 مواقف متتالية خلال شهر'},
+ {d:'soc', type:'سلوكي', sev:['متوسطة'], need:['n_share'], t:'أن ينتظر الطالب دوره في لعبة جماعية ويلتزم به في 4 من 5 جولات خلال 4 أسابيع'},
+ {d:'soc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_share'], t:'أن يعطي زميله لعبة عند طلبها بتوجيه لفظي'},
+ {d:'soc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_greet'], t:'أن يستخدم الطالب عبارات التحية وآداب التفاعل'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_greet'], t:'أن يحيّي الطالب المعلم والأقران بـ"السلام عليكم" عند الدخول دون تذكير في 4 من 5 أيام خلال 3 أسابيع'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة'], need:['n_greet'], t:'أن يستأذن الطالب قبل الكلام أو الخروج بنسبة 80% خلال شهر'},
+ {d:'soc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_greet'], t:'أن يرد على التحية بمثلها عند تحيته'},
+ {d:'soc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_emotion'], t:'أن يتعرف الطالب على مشاعره ويضبط انفعالاته'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_emotion'], t:'أن يسمّي الطالب 4 مشاعر أساسية (سعيد/حزين/غاضب/خائف) من صور الوجوه بنسبة 80% خلال شهر'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_emotion'], t:'أن يستخدم الطالب استراتيجية التهدئة (تنفس/ركن الهدوء) بدل الصراخ عند الغضب في 3 من 4 مواقف خلال 6 أسابيع'},
+ {d:'soc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_emotion'], t:'أن يشير إلى الوجه السعيد والحزين من بطاقات المشاعر'},
+ {d:'soc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_wait'], t:'أن يلتزم الطالب بانتظار الدور وقواعد الصف'},
+ {d:'soc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_wait'], t:'أن يرفع الطالب يده وينتظر الإذن قبل الإجابة في 4 من 5 حصص خلال أسبوعين'},
+ {d:'soc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_wait'], t:'أن يقف في الطابور دون تجاوز زملائه'},
+ // --- حركي ---
+ {d:'motor', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_gross'], t:'أن يُنمّي الطالب مهاراته الحركية الكبرى والتوازن'},
+ {d:'motor', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_gross'], t:'أن يقفز الطالب بقدمين معًا فوق خط لمسافة 30 سم في 3 من 4 محاولات خلال شهر'},
+ {d:'motor', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_gross'], t:'أن يصعد الطالب الدرج بتبادل القدمين ممسكًا الدرابزين بنسبة 80% خلال 6 أسابيع'},
+ {d:'motor', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_gross'], t:'أن يرمي الكرة بكلتا اليدين نحو هدف على بعد مترين'},
+ {d:'motor', type:'قصير', sev:['متوسطة','شديدة'], need:['n_gross'], t:'أن يمشي على خط مستقيم دون خروج لمدة 3 أمتار'},
+ {d:'motor', type:'عام', sev:['بسيطة','متوسطة'], need:['n_fine'], t:'أن يُحسّن الطالب مهاراته الحركية الدقيقة والتناسق بين العين واليد'},
+ {d:'motor', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_fine'], t:'أن يقص الطالب خطًا مستقيمًا بالمقص بطول 10 سم بانحراف أقل من 1 سم في 3 من 4 محاولات خلال شهر'},
+ {d:'motor', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_fine'], t:'أن يلضم الطالب 5 خرزات كبيرة في خيط خلال 5 دقائق بنسبة 80% خلال 4 أسابيع'},
+ {d:'motor', type:'قصير', sev:['متوسطة'], need:['n_fine'], t:'أن يركّب 4 مكعبات فوق بعضها دون سقوط'},
+ {d:'motor', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_fine'], t:'أن ينقل حبات الفول بالملقط من طبق لآخر (10 حبات)'},
+ // --- سلوكي ---
+ {d:'beh', type:'عام', sev:['بسيطة','متوسطة','شديدة'], need:['n_att'], t:'أن يُطيل الطالب مدة انتباهه وجلوسه للمهمة'},
+ {d:'beh', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_att'], t:'أن يجلس الطالب على كرسيه منشغلًا بالمهمة لمدة 15 دقيقة متواصلة بتذكير واحد فقط في 4 من 5 حصص خلال شهر'},
+ {d:'beh', type:'سلوكي', sev:['متوسطة','شديدة'], need:['n_att'], t:'أن يجلس الطالب لإتمام نشاط واحد لمدة 5 دقائق دون مغادرة المكان في 4 من 5 مرات خلال 3 أسابيع'},
+ {d:'beh', type:'قصير', sev:['متوسطة','شديدة'], need:['n_att'], t:'أن يبقى جالسًا ومنتبهًا للمعلم لمدة دقيقتين'},
+ {d:'beh', type:'عام', sev:['بسيطة','متوسطة'], need:['n_agg'], t:'أن يخفض الطالب السلوكيات غير المرغوبة ويستبدلها بسلوك مقبول'},
+ {d:'beh', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_agg'], t:'أن تنخفض نوبات الصراخ لدى الطالب من 5 إلى نوبة واحدة يوميًا باستخدام جدول التعزيز خلال 6 أسابيع'},
+ {d:'beh', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_agg'], t:'أن يطلب الطالب استراحة ببطاقة "أحتاج راحة" بدل رمي الأدوات في 4 من 5 مواقف غضب خلال شهر'},
+ {d:'beh', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_agg'], t:'أن يجمع الأدوات المرمية ويعيدها لمكانها عند الطلب بهدوء'},
+ {d:'beh', type:'عام', sev:['بسيطة','متوسطة'], need:['n_routine'], t:'أن يلتزم الطالب بالروتين الصفي وتعليمات المعلم'},
+ {d:'beh', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_routine'], t:'أن يرتب الطالب أدواته وحقيبته في أماكنها نهاية كل حصة دون تذكير بنسبة 80% خلال شهر'},
+ {d:'beh', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_routine'], t:'أن يجلس في مكانه عند سماع جرس الحصة خلال دقيقة'},
+ // --- مهني ---
+ {d:'voc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_sort'], t:'أن يتقن الطالب مهارات الفرز والتصنيف الأساسية للعمل'},
+ {d:'voc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_sort'], t:'أن يفرز الطالب 20 قطعة حسب اللون والحجم في سلة كل نوع بنسبة 90% خلال 4 أسابيع'},
+ {d:'voc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_sort'], t:'أن يصنف المسامير الكبيرة والصغيرة في علبتين'},
+ {d:'voc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_task'], t:'أن يُتم الطالب مهمة عملية من خطوات متسلسلة حتى النهاية'},
+ {d:'voc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_task'], t:'أن يُتم الطالب مهمة ترتيب 10 كتب على الرف حسب الحجم مستقلًا خلال 10 دقائق بنسبة 80% خلال شهر'},
+ {d:'voc', type:'سلوكي', sev:['متوسطة'], need:['n_task'], t:'أن ينفذ الطالب مهمة سقي النباتات (ملء - سقي - إعادة) بتسلسل صحيح في 4 من 5 مرات خلال شهر'},
+ {d:'voc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_task'], t:'أن يتبع بطاقة خطوات مصورة لإنجاز مهمة من 3 خطوات'},
+ {d:'voc', type:'عام', sev:['بسيطة','متوسطة'], need:['n_tools'], t:'أن يستخدم الطالب الأدوات البسيطة بشكل آمن وصحيح'},
+ {d:'voc', type:'سلوكي', sev:['بسيطة','متوسطة'], need:['n_tools'], t:'أن يستخدم الطالب المقص والصمغ لإنجاز عمل فني بسيط متبعًا خطوات السلامة بنسبة 80% خلال شهر'},
+ {d:'voc', type:'قصير', sev:['بسيطة','متوسطة'], need:['n_tools'], t:'أن يسمّي 5 أدوات واستخدام كل منها'},
+];
+
+const domName = id => (DOMAINS.find(d=>d.id===id)||{}).name || id;
+
+/* ============ عرض المجالات ============ */
+let selected = new Set();
+function renderDomains(){
+  const box = document.getElementById('domains');
+  box.innerHTML = DOMAINS.map(d=>`
+    <div class="domain">
+      <div class="domain-head" style="background:${d.color}"><span>${d.name}</span><span style="font-size:.75rem;background:rgba(255,255,255,.25);padding:2px 10px;border-radius:999px">${d.needs.length} احتياجات</span></div>
+      <div class="domain-body">
+        ${d.needs.map(n=>`<label class="need"><input type="checkbox" value="${n.id}" onchange="toggleNeed(this)"><span><b>${n.t}</b><small>${n.d}</small></span></label>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function toggleNeed(el){ el.checked ? selected.add(el.value) : selected.delete(el.value); updCount(); }
+function selectAll(v){
+  document.querySelectorAll('#domains input[type=checkbox]').forEach(c=>{c.checked=v; v?selected.add(c.value):selected.delete(c.value);});
+  updCount();
+}
+function updCount(){ document.getElementById('selCount').textContent = `تم تحديد ${selected.size} نقطة احتياج`; }
+function getSev(){ return document.querySelector('input[name=sev]:checked').value; }
+
+/* ============ بنك الأهداف ============ */
+function renderBank(){
+  const q=(document.getElementById('q').value||'').trim();
+  const fd=document.getElementById('fDomain').value, ft=document.getElementById('fType').value, fs=document.getElementById('fSev').value;
+  const res = BANK.filter(g=>
+    (!fd||g.d===fd) && (!ft||g.type===ft) && (!fs||g.sev.includes(fs)) &&
+    (!q||g.t.includes(q))
+  );
+  document.getElementById('bankCount').textContent = `النتائج: ${res.length} هدف`;
+  document.getElementById('bankList').innerHTML = res.length? res.map((g,i)=>{
+    const idx=BANK.indexOf(g);
+    return `<div class="goal"><div class="meta"><span class="tag">${domName(g.d)}</span><span class="tag t-${g.type}">${g.type==='سلوكي'?'🎯 سلوكي قابل للقياس':g.type==='قصير'?'✂️ قصير تدريسي':'🌟 عام'}</span><span class="tag">يناسب: ${g.sev.join('، ')}</span></div><div class="txt">${g.t}</div><div class="row no-print"><button class="btn btn-pri btn-sm" onclick="addToPlan(${idx})">➕ إضافة للخطة</button><button class="btn btn-ghost btn-sm" onclick="copyText(\`${g.t.replace(/`/g,'')}\`)">📋 نسخ</button></div></div>`;
+  }).join('') : '<div class="empty">لا توجد نتائج مطابقة — جرّب كلمة أخرى أو غيّر الترشيح.</div>';
+}
+function fillDomainFilter(){
+  document.getElementById('fDomain').innerHTML = '<option value="">كل المجالات</option>'+DOMAINS.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
+}
+function copyBank(){
+  const items=[...document.querySelectorAll('#bankList .txt')].map(e=>'- '+e.textContent).join('\n');
+  if(!items) return toast('لا توجد نتائج لنسخها');
+  navigator.clipboard.writeText(items).then(()=>toast('✅ تم نسخ نتائج البنك'));
+}
+
+/* ============ الخطة ============ */
+let plan = JSON.parse(localStorage.getItem('iep_plan')||'[]');
+
+function generatePlan(){
+  const sev=getSev();
+  const nb=+document.getElementById('numBeh').value, ns=+document.getElementById('numShort').value;
+  const weeks=document.getElementById('weeks').value;
+  if(selected.size===0){ toast('⚠️ حدّد نقطة احتياج واحدة على الأقل أولًا'); document.getElementById('wizard').scrollIntoView({behavior:'smooth'}); return; }
+  plan=[];
+  selected.forEach(nid=>{
+    const needTxt = findNeed(nid);
+    const poolG = BANK.filter(g=>g.need.includes(nid)&&g.type==='عام'&&g.sev.includes(sev));
+    const poolB = BANK.filter(g=>g.need.includes(nid)&&g.type==='سلوكي'&&g.sev.includes(sev));
+    const poolS = BANK.filter(g=>g.need.includes(nid)&&g.type==='قصير'&&g.sev.includes(sev));
+    const fb = pool=> pool.length?pool:(BANK.filter(g=>g.need.includes(nid)));
+    const pick=(arr,n)=>arr.slice(0,n);
+    const general = (poolG[0]||fb(BANK.filter(g=>g.need.includes(nid)&&g.type==='عام'))[0]);
+    if(general) plan.push({sec:needTxt, type:'عام', text:withWeeks(general.t,weeks)});
+    pick(poolB.length?poolB:fb(BANK.filter(g=>g.need.includes(nid)&&g.type==='سلوكي')),nb).forEach(g=>plan.push({sec:needTxt,type:'سلوكي',text:g.t}));
+    pick(poolS.length?poolS:fb(BANK.filter(g=>g.need.includes(nid)&&g.type==='قصير')),ns).forEach(g=>plan.push({sec:needTxt,type:'قصير',text:g.t}));
+  });
+  savePlan(); renderPlan();
+  document.getElementById('plan').scrollIntoView({behavior:'smooth'});
+  toast(`✅ تم توليد ${plan.length} هدفًا لـ ${selected.size} احتياجات`);
+}
+function withWeeks(t,w){ return /خلال|أسبوع|شهر/.test(t)? t : t+` خلال ${w} أسبوعًا`; }
+function findNeed(nid){ for(const d of DOMAINS){const n=d.needs.find(x=>x.id===nid); if(n) return d.name+' — '+n.t;} return nid; }
+
+function renderPlan(){
+  const box=document.getElementById('planPaper');
+  const name=document.getElementById('stuName').value||'................';
+  const age=document.getElementById('stuAge').value||'....';
+  const grade=document.getElementById('stuGrade').value||'............';
+  const term=document.getElementById('term').value, weeks=document.getElementById('weeks').value;
+  const sev=getSev(), notes=document.getElementById('stuNotes').value;
+  if(!plan.length){ box.innerHTML='<div class="empty">لم يتم توليد الخطة بعد.<br>حدّد نقاط الاحتياج بالأعلى ثم اضغط <b>«توليد الأهداف»</b> — أو أضف أهدافًا يدويًا من بنك الأهداف.</div>'; return; }
+  const groups={};
+  plan.forEach((p,i)=>{ (groups[p.sec]=groups[p.sec]||[]).push({...p,i}); });
+  let n=0;
+  box.innerHTML=`
+    <div style="text-align:center;border-bottom:3px double #123c5e;padding-bottom:10px;margin-bottom:10px">
+      <div style="font-weight:900;font-size:1.25rem">الخطة التربوية الفردية (IEP) — الإعاقة العقلية</div>
+      <div style="color:#555">اسم الطالب/ة: <b>${esc(name)}</b> | العمر: <b>${esc(age)}</b> | الصف: <b>${esc(grade)}</b></div>
+      <div style="color:#555">درجة الإعاقة: <b>${sev}</b> | ${esc(term)} | مدة التنفيذ: <b>${weeks} أسابيع</b> | العام: ${new Date().getFullYear()}م</div>
+      ${notes?`<div style="font-size:.88rem;color:#444">ملاحظات تشخيصية: ${esc(notes)}</div>`:''}
+    </div>
+    ${Object.entries(groups).map(([sec,items])=>`
+      <h3>🧩 ${esc(sec)}</h3>
+      <ul>${items.map(p=>{n++;return `<li><b style="color:#123c5e">[${n}]</b> <span class="tag t-${p.type}" style="font-size:.72rem">${p.type==='سلوكي'?'سلوكي قابل للقياس':p.type==='قصير'?'قصير تدريسي':'هدف عام'}</span> ${esc(p.text)} <button class="btn btn-ghost btn-sm no-print" onclick="removeGoal(${p.i})">✖</button></li>`}).join('')}</ul>
+    `).join('')}
+    <h3>📝 أساليب التدريس والقياس المقترحة</h3>
+    <ul>
+      <li>التعليم المباشر + تحليل المهمة إلى خطوات صغيرة + النمذجة والتقليد.</li>
+      <li>المساعدات المتدرجة (جسدية → إشارية → لفظية → مستقل) وسحبها تدريجيًا.</li>
+      <li>التعزيز الفوري (معززات مادية ومعنوية) وجداول التعزيز ولوحة النجوم.</li>
+      <li>القياس: بطاقة ملاحظة يومية + نسبة نجاح % + عدد المحاولات الناجحة من الكلية.</li>
+    </ul>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;font-size:.9rem">
+      <div>توقيع معلم/ة التربية الخاصة: ................<br>التاريخ: .... / .... / ....</div>
+      <div>توقيع ولي الأمر: ................<br>توقيع مدير/ة المدرسة: ................</div>
+    </div>`;
+}
+function addToPlan(idx){ const g=BANK[idx]; const needTxt=g.need.map(findNeed).join('؛ '); plan.push({sec:needTxt||domName(g.d),type:g.type,text:g.t}); savePlan(); renderPlan(); toast('✅ أُضيف الهدف إلى الخطة'); }
+function addCustom(){ const v=document.getElementById('customGoal').value.trim(); if(!v) return toast('اكتب الهدف أولًا'); plan.push({sec:'🎯 أهداف مخصصة',type:document.getElementById('customType').value,text:v}); document.getElementById('customGoal').value=''; savePlan(); renderPlan(); }
+function removeGoal(i){ plan.splice(i,1); savePlan(); renderPlan(); }
+function clearPlan(){ if(!plan.length) return; if(confirm('مسح كل أهداف الخطة؟')){plan=[];savePlan();renderPlan();} }
+function savePlan(){ localStorage.setItem('iep_plan',JSON.stringify(plan)); ['stuName','stuAge','stuGrade','stuNotes'].forEach(id=>localStorage.setItem('iep_'+id,document.getElementById(id).value)); }
+function loadSaved(){ ['stuName','stuAge','stuGrade','stuNotes'].forEach(id=>{const v=localStorage.getItem('iep_'+id); if(v)document.getElementById(id).value=v;}); }
+function copyPlan(){
+  if(!plan.length) return toast('الخطة فارغة');
+  const txt=plan.map((p,i)=>`${i+1}. [${p.type}] (${p.sec}): ${p.text}`).join('\n');
+  navigator.clipboard.writeText(`الخطة التربوية الفردية - ${document.getElementById('stuName').value}\nدرجة الإعاقة: ${getSev()}\n\n${txt}`).then(()=>toast('✅ تم نسخ الخطة'));
+}
+function downloadPlan(){
+  if(!plan.length) return toast('الخطة فارغة');
+  const html=`<html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>الخطة الفردية</title></head><body>${document.getElementById('planPaper').innerHTML}</body></html>`;
+  const blob=new Blob(['\ufeff'+html],{type:'application/msword'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='الخطة-الفردية.doc'; a.click();
+}
+function copyText(t){ navigator.clipboard.writeText(t).then(()=>toast('✅ تم النسخ')); }
+function esc(s){ return String(s).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2200); }
+
+/* init */
+renderDomains(); fillDomainFilter(); renderBank(); loadSaved(); renderPlan();
+document.getElementById('stGoals').textContent=BANK.length;
+['stuName','stuAge','stuGrade','stuNotes'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{savePlan();renderPlan();}));
+document.querySelectorAll('input[name=sev]').forEach(r=>r.addEventListener('change',renderPlan));
+</script>
+</body>
+</html>
